@@ -46,18 +46,13 @@ if(isset($_POST["login"])){
             $_SESSION["usuario"]=$us;
             ?>
             <script>
-                window.location.assign("http://localhost/Marvel/home")
+                window.location.assign("http://localhost/Marvel/TodoMarvel/home")
             </script>
             <?php
         }
         else{
             $error = "Usuario o Contraseña incorrectos";
             session_destroy();
-            ?>
-            <script>
-                window.location.reload
-            </script>
-            <?php
         }
 }
 ?>
@@ -84,7 +79,7 @@ if(isset($_POST["login"])){
         <form method="POST" action="<?php $_SERVER['PHP_SELF']?>">
           <div class="row">
             <i class="fas fa-user"></i>
-            <input type="text" name="usuario" placeholder="Usuario" id="usuario">
+            <input type="text" name="usuario" placeholder="Usuario" id="usuario" <?php if(isset($_POST['usuario'])) echo 'value="'.$_POST['usuario'].'"' ?>> 
           </div>
           <div class="row">
             <i class="fas fa-lock"></i>

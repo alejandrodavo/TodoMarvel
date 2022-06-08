@@ -28,11 +28,30 @@ $usuario = $_SESSION["usuario"];
 </head>
 
 <?php
+include("assets/clases/usuarios.php");
 
+$mail="";
+$usu="";
+$fechaN="";
+
+$msg="";
 
 if(isset($_POST["recuperar"])){
     $mail=$_POST["email"];
+    $usu=$_POST["usuario"];
+    $fechaN=$_POST["fechaN"];
 
+    $res=Usuario::recuperarContraseña($usu,$mail,$fechaN);
+    if ($res!=""){
+      if($res!="ERROR")
+        $msg="Contraseña: <u>$res</u>";
+      else
+      $msg="<u>Credenciales incorrectas.</u>";
+    }
+    else{
+        $msg = "Credenciales incorrectas.";
+        session_destroy();
+    }
 
 }
 
@@ -64,19 +83,20 @@ if(isset($_POST["recuperar"])){
         <form method="POST" action="<?php $_SERVER['PHP_SELF']?>">
         <div class="row">
             <i class="fas fa-user"></i>
-            <input type="text" name="usuario" placeholder="Usuario" required>
+            <input type="text" name="usuario" placeholder="Usuario" required <?php if(isset($_POST['usuario'])) echo 'value="'.$_POST['usuario'].'"' ?>>
           </div>
           <div class="row">
             <i class="fas fa-envelope"></i>
-            <input type="text" name="email" placeholder="Email" required>
+            <input type="text" name="email" placeholder="Email" required <?php if(isset($_POST['email'])) echo 'value="'.$_POST['email'].'"' ?>>
           </div>
           <div class="row">
             <i class="fas fa-calendar"></i>
-            <input type="date" name="fechaN" placeholder="Fecha de Nacimiento" required>
+            <input type="date" name="fechaN" placeholder="Fecha de Nacimiento" required <?php if(isset($_POST['fechaN'])) echo 'value="'.$_POST['fechaN'].'"' ?> >
           </div>
           <div class="row button">
             <input type="submit" value="Recuperar contraseña" name="recuperar">
           </div>
+          <p style="text-align:center;"><?php if(!empty($msg)){ echo $msg;}?></p>
           <div class="signup-link"><a href="home">Volver</a></div>
         </form>
       </div>

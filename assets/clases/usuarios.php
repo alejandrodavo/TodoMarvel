@@ -88,6 +88,45 @@ class Usuario{
 			return false;
     }
 
+    static function recuperarContraseña($usu, $correo, $fechaN){
+		$msg="";
+        $mysqli = conectarBD(); 
+		$sql = "select password from usuarios 
+		where username='$usu' and correo='$correo' and fechaNacimiento='$fechaN'";
+		$resultado = $mysqli->query($sql);
+        if ($mysqli->error!="") { 
+			echo "Error: La ejecución de la consulta falló debido a: \n"; 
+			echo "Query: " . $sql . "<br>\n"; 
+			echo "Errno: " . $conexion->errno . "<br>\n"; 
+			echo "Error: " . $conexion->error . "<br>\n"; 
+			exit; 
+		}
+
+        $fila = $resultado->fetch_assoc();
+        if($fila==null)
+        return $msg="ERROR";
+        $pass=$fila['password'];
+        $passEncrip=desEncripta($pass,'ENCRIPT');
+        $resultado->free(); 
+        desconectarBD($mysqli);
+        return $passEncrip;
+	}
+
+    static function existeRecuperar(){
+        $msg="";
+		$sql = "select count(*) as cuantos from usuarios 
+		where nombre='$this->nombre' and pass='$passEncrip'";
+		//echo $sql;
+		$conexion=Conexion::conectarBD();
+		$res=$conexion->query($sql);
+		$linea=$res->fetch_assoc();
+		Conexion::desconectarBD($conexion);
+		if($linea['cuantos']!=0)
+			return true;
+		else 
+			return false;
+    }
+
     function modificar(){	
 		$conexion = conectarBD();	
         $sql = "update usuarios set nombre='$this->id_usuario','$this->correo','$this->usu','$this->password','$this->nombre' ,'$this->avatar' where id_usuario=$this->id_usuario";
