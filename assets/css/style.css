@@ -1,0 +1,185 @@
+*{margin: 0;}
+html{ font-family: "Cabin", "Sans-serif";}
+
+body{background-color: #ebe3e3;}
+
+main{padding:0;margin:0 auto;width:85%; max-width: 850px; line-height:1.75;word-spacing:0.1em;}
+
+p{margin-bottom: 1.6em;}
+
+h1{font-size: 2rem; line-height: 1.3em;}
+
+a{text-decoration:none}
+
+a:hover{color:#dcdcdc;text-decoration:none}
+
+a:link{color:#dcdcdc;text-decoration:none }
+
+a:visited{color:#dcdcdc;text-decoration:none}
+
+.seleccionado{font-weight: bold;font-size: 1.2em;}
+
+
+
+
+header #bloq{
+    width: 100%;
+    color: white;
+    background-color: #ED1D24;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu {
+	width: 45%;
+	height: auto;
+	display: flex;
+	position: absolute;
+	top: 4rem;
+	background-color: rgb(206, 27, 33);
+	flex-direction: column;
+	transform: translatex(-120%);
+	transition: transform 0.4s;
+}
+
+#hamburguesa {
+	display: none;
+}
+
+.menu li {
+	padding: 1rem;
+	margin: 1px;
+	margin-left: -30px;
+	color: #fff;
+	list-style-type: none;
+}
+.menu li a {
+    color: #fff;
+    text-decoration: none;
+	font-weight: bold;
+}
+
+#hamburguesa:checked~.menu {
+	display: block;
+	transform: translatex(0%);
+}
+
+#icono{
+	margin-right: 0.5em;
+}
+.logo{
+	margin-left: 0.5em;
+}
+
+
+
+main{padding-top: 4rem;}
+
+
+.tit a{
+    text-decoration: none;
+    color: #071224;
+}
+
+
+.tit{
+    text-align: center;
+    margin: 20px;
+	font-size: 2em;
+}
+
+#imagenes{
+    margin: 20px;
+}
+#servs{
+	border: 1px solid black;
+	margin: 20px;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+
+#servs a{
+    color: black;
+}
+
+#servs:hover{
+    box-shadow: 0px 0px 15px #888888;
+
+}
+
+#text-bloq{
+	margin: 5px;
+}
+
+
+
+
+
+footer{
+	background-color: #ED1D24;
+	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	text-align: center;
+    bottom: 0;
+    padding: 20px 0;
+}
+
+footer,p{text-align:center}
+
+
+
+
+@media (min-width:768px) { 
+
+    .menu {
+		transform: translatex(-3%);
+		height: auto;
+		width: 100%;
+		transition: none;
+		top: 0;
+		flex-direction: row;
+		justify-content: flex-end;
+		align-items: center;
+		background-color: transparent;
+	}
+	.logo{
+		margin-left: 2.5em;
+	}
+
+	#icono {
+		display: none;
+	}
+
+	.menu li {
+		margin-top: .3rem;
+		margin-right: .8rem;
+		margin-left: 0;
+	}
+	.menu li a{
+		font-weight: bold;
+	}
+
+
+    #imagenes{
+		display: flex;
+		justify-content: center;
+	}
+	#imagenes section{
+		width: 400px;
+	}
+
+
+}
+
+
+.usuario{
+	border: 1px solid red;
+	padding: 30px;
+	background-color: #741418;
+}
+
