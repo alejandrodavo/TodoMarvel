@@ -177,14 +177,7 @@ class Usuario{
         return $filas;
     }
 
-    function borrar(){
-        $mysqli = conectarBD(); 
-        $sql = "delete from usuarios where id_usuario=".$this->id_usuario;
-        $mysqli->query($sql);
-        $num_filas=$mysqli->affected_rows;
-        desconectarBD($mysqli);
-        return $num_filas;
-    }
+
 
     static function valores_select($campo){
         $valores=array();
@@ -219,8 +212,9 @@ class Usuario{
 
 
     function insertar(){	
-		$conexion = conectarBD();	
-		$sql = "insert into usuarios values('null','$this->correo','$this->usu','$this->password','$this->nombre','$this->fechaN','$this->avatar')";	
+		$conexion = conectarBD();
+        $passEncrip=encripta($this->password,'ENCRIPT');
+		$sql = "insert into usuarios values('null','$this->correo','$this->usu','$passEncrip','$this->nombre','$this->fechaN','$this->avatar')";	
 		$res = $conexion->query ($sql);
 		if ($conexion->error!="") { 
 			echo "Error: La ejecución de la consulta falló debido a: \n"; 
@@ -232,6 +226,15 @@ class Usuario{
 		desconectarBD($conexion);
 		return $res;
 	}
+
+    function borrar(){
+        $mysqli = conectarBD(); 
+        $sql = "delete from usuarios where id_usuario=".$this->id_usuario;
+        $mysqli->query($sql);
+        $num_filas=$mysqli->affected_rows;
+        desconectarBD($mysqli);
+        return $num_filas;
+    }
 
 }
 

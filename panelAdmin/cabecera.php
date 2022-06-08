@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="robots" content="noindex" />
-    <title>Home</title>
+    <title>Panel de Control | TodoMarvel</title>
     <link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
     <link rel="alternate" type="application/atom+xml" title="My Weblog feed" href="/feed/" />
     <link rel="search" type="application/opensearchdescription+xml" title="My Weblog search" href="opensearch.xml" />
