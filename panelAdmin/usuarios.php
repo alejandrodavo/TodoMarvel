@@ -127,20 +127,7 @@ class Usuario{
 			return false;
     }
 
-    function modificar(){	
-		$conexion = conectarBD();	
-        $sql = "update usuarios set nombre='$this->id_usuario','$this->correo','$this->usu','$this->password','$this->nombre' ,'$this->avatar' where id_usuario=$this->id_usuario";
-		$res = $conexion->query ($sql);
-		if ($conexion->error!="") { 
-			echo "Error: La ejecución de la consulta falló debido a: \n"; 
-			echo "Query: " . $sql . "<br>\n"; 
-			echo "Errno: " . $conexion->errno . "<br>\n"; 
-			echo "Error: " . $conexion->error . "<br>\n"; 
-			exit; 
-		} 
-		desconectarBD($conexion);
-		return $res;
-	}
+
 
     static function devolver_todas_filas(){
         $filas = array();
@@ -160,6 +147,8 @@ class Usuario{
         $sql="SELECT * FROM usuarios where id_usuario = '$id'";
         $resultado = $mysqli->query($sql);
         $fila = $resultado->fetch_assoc();
+        $passDecrip=desEncripta($fila["password"],"ENCRIPT");
+        $fila["password"]=$passDecrip;
         $resultado->free(); 
         desconectarBD($mysqli);
         return $fila;
@@ -235,6 +224,22 @@ class Usuario{
         desconectarBD($mysqli);
         return $num_filas;
     }
+
+    function modificar(){	
+		$conexion = conectarBD();
+        $passEncrip=encripta($this->password,'ENCRIPT');
+        $sql = "update usuarios set correo='$this->correo', username='$this->usu',password='$passEncrip',nombre='$this->nombre' ,fechaNacimiento='$this->fechaN' where id_usuario=$this->id_usuario";
+		$res = $conexion->query ($sql);
+		if ($conexion->error!="") { 
+			echo "Error: La ejecución de la consulta falló debido a: \n"; 
+			echo "Query: " . $sql . "<br>\n"; 
+			echo "Errno: " . $conexion->errno . "<br>\n"; 
+			echo "Error: " . $conexion->error . "<br>\n"; 
+			exit; 
+		} 
+		desconectarBD($conexion);
+		return $res;
+	}
 
 }
 
