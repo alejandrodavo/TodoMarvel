@@ -12,7 +12,7 @@ if(isset($_SESSION["usuario"])){
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="robots" content="noindex" />
-    <title>Login</title>
+    <title>Crear cuenta</title>
     <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
     <link rel="stylesheet" type="text/css" href="assets/css/formularios.css" />
     <link rel="alternate" type="application/atom+xml" title="My Weblog feed" href="/feed/" />
