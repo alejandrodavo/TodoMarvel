@@ -29,11 +29,16 @@ $(document).ready(function () {
         if ($("#usuario").val() == "") {
             $("#usuario").attr("placeholder", "Introduce usuario!")
             $("#usuario").css("box-shadow", "inset 0px 0px 2px 2px rgba(237,29,36,1)")
-            $("#iniciar-sesion").attr("disabled","disabled")
+            $("#iniciar-sesion").attr("disabled", "disabled")
             $("#iniciar-sesion").toggleClass("iniciar-sesion-disable")
             $("#iniciar-sesion").val("Corrige los errores")
         }
         if ($("#usuario").val() != "") {
+            if ($("#contraseña").val() == "") {
+                $("#iniciar-sesion").attr("disabled", "disabled");
+                $("#iniciar-sesion").toggleClass("iniciar-sesion-disable");
+                $("#iniciar-sesion").val("Corrige los errores");
+            }
             $("#usuario").css("box-shadow", "inset 0px 0px 2px 2px rgba(237,29,36,0)")
             $("#iniciar-sesion").removeAttr("disabled")
             $("#iniciar-sesion").toggleClass("iniciar-sesion-disable")
@@ -46,11 +51,16 @@ $(document).ready(function () {
             $("#contraseña").attr("placeholder", "Contraseña vacía!")
             $("#contraseña").css("box-shadow", "inset 0px 0px 2px 2px rgba(237,29,36,1)")
             $("#error-password").text("Faltan campos")
-            $("#iniciar-sesion").attr("disabled","disabled");
+            $("#iniciar-sesion").attr("disabled", "disabled");
             $("#iniciar-sesion").toggleClass("iniciar-sesion-disable");
             $("#iniciar-sesion").val("Corrige los errores");
         }
         if ($("#contraseña").val() != "") {
+            if ($("#usuario").val() == "") {
+                $("#iniciar-sesion").attr("disabled", "disabled");
+                $("#iniciar-sesion").toggleClass("iniciar-sesion-disable");
+                $("#iniciar-sesion").val("Corrige los errores");
+            }
             $("#contraseña").css("box-shadow", "inset 0px 0px 2px 2px rgba(237,29,36,0)")
             $("#iniciar-sesion").removeAttr("disabled")
             $("#iniciar-sesion").removeAttr("class")
@@ -68,7 +78,7 @@ $(document).ready(function () {
         } else {
             $("#error-password").text("8-16 caracteres, minusculas, mayusculas, digitos y no alfanumérico")
             $("#iniciar-sesion").val("Corrige los errores");
-            $("#iniciar-sesion").attr("disabled","disabled");
+            $("#iniciar-sesion").attr("disabled", "disabled");
             $("#contraseña").css("box-shadow", "inset 0px 0px 2px 2px rgba(237,29,36,0)")
         }
     })
