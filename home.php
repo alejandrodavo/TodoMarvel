@@ -38,7 +38,7 @@ $usuario = $_SESSION["usuario"];
                 <li><a href="contacto">Contacto</a></li>
                 <li><a href="blog">Blog</a></li>
                 <?php
-                if($usuario==="admin") echo '<li><a href="panel">Admin</a></li>';
+                if($usuario==="admin") echo '<li><a href="panelAdmin/index.php">Admin</a></li>';
                 if($usuario==="") echo '<li><a href="login">Login</a></li>';
                 if($usuario!="" && $usuario != "admin") echo"<li><a href='perfil?usuario=$usuario'>$usuario</a></li>"
                 ?>
