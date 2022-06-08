@@ -176,7 +176,9 @@ footer,p{text-align:center}
 
 }
 
-
+::selection{
+	background: rgba(237,29,36,0.3);
+  }
 .usuario{
 	border: 1px solid red;
 	padding: 30px;

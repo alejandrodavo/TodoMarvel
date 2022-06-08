@@ -29,7 +29,9 @@ table {
     letter-spacing: .1em;
     text-transform: uppercase;
   }
-  
+  ::selection{
+    background: rgba(237,29,36,0.3);
+  }
   @media screen and (max-width: 600px) {
     table {
       border: 0;

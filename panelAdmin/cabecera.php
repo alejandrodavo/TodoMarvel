@@ -1,3 +1,11 @@
+<?php
+session_start();
+if(isset($_SESSION["usuario"]))
+$usuario = $_SESSION["usuario"];
+else $usuario = "";
+if($usuario === "admin"){
+    
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
 
@@ -20,6 +28,18 @@
 <body>
 
 
+    <?php 
+    if(isset($_POST["salir"])){
+        session_destroy();
+        ?>
+        <script>
+            window.location.assign("http://localhost/Marvel/TodoMarvel/home")
+        </script>
+        <?php
+    }
+        ?>
+    
+
 <header>
         <div id="bloq">
             <a href="home"><img class="logo" src="../assets/images/logo.png"></a>
@@ -31,8 +51,14 @@
                 <li><a href="index.php?p=pA">PETICIONES</a></li>
                 <li><a href="index.php?p=pM">PERSONAJES</a></li>
                 <li><a href="../home">VOLVER</a></li>
+                <li><form method="POST" action="<?php $_SERVER['PHP_SELF']?>"><input style="background-color:transparent;border:0px solid transparent;color:white;font-weight:bold;cursor:pointer;" type="submit" value="SALIR" name="salir"></form></li>
             </ul>
         </div>
     </header>
 
 
+    <?php
+}else{
+    echo "<h1>No tienes permisos para ver esta página!</h1>";
+}
+?>
