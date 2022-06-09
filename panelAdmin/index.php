@@ -25,7 +25,7 @@
 
 
 	if($opcion=="pA"){
-		$pagina="asignaturasAlta.php";
+		$pagina="pedidosAlta.php";
 		$actual="ASIGNATURAS";
 	}
 	if($opcion=="pAb"){
@@ -37,8 +37,13 @@
 		$actual="MODIFICAR ASIGNATURAS";
 	}
 	
-	if($opcion=="principal"){
+	if($opcion=="listado"){
 		$pagina="listaAlumnos3_PDF.php";
+		$actual="";
+	}
+
+	if($opcion=="principal"){
+		$pagina="inicial.php";
 		$actual="";
 	}
 

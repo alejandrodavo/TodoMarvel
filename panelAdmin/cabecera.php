@@ -47,6 +47,7 @@ if($usuario === "admin"){
             <label for="hamburguesa" class="fa fa-bars" id="icono"></label>
             <ul class="menu">
                 <li><a href="index.php?p=principal">INICIO</a></li>
+                <li><a href="index.php?p=listado">PDF</a></li>
                 <li><a href="index.php?p=p1">USUARIOS</a></li>
                 <li><a href="index.php?p=pA">PETICIONES</a></li>
                 <li><a href="index.php?p=pM">PERSONAJES</a></li>
