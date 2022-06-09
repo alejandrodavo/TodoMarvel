@@ -28,13 +28,10 @@
 		$pagina="pedidosAlta.php";
 		$actual="ASIGNATURAS";
 	}
-	if($opcion=="pAb"){
-		$pagina="asignaturasBorrar.php";
-		$actual="BORRAR ASIGNATURAS";
-	}
+
 	if($opcion=="pAm"){
 		$pagina="pedidosModificar.php";
-		$actual="MODIFICAR ASIGNATURAS";
+		$actual="MODIFICAR PEDIDOS";
 	}
 	
 	if($opcion=="listado"){
@@ -48,21 +45,17 @@
 	}
 
 
-	if($opcion=="pM"){
-		$pagina="matriculas.php";
-		$actual="MATRICULAS";
+	if($opcion=="pPer"){
+		$pagina="personajeAlta.php";
+		$actual="PERSONAJES";
 	}
-	if($opcion=="pMa"){
-		$pagina="matriculasAlta.php";
-		$actual="MATRICULAS";
+	if($opcion=="pPerB"){
+		$pagina="personajeBorrar.php";
+		$actual="BORRAR PERSONAJE";
 	}
-	if($opcion=="pMb"){
-		$pagina="matriculasBorrar.php";
-		$actual="MATRICULAS";
-	}
-	if($opcion=="pMn"){
-		$pagina="matriculasNotas.php";
-		$actual="NOTAS";
+	if($opcion=="pPerM"){
+		$pagina="personajeModificar.php";
+		$actual="MODIFICAR PERSONAJE";
 	}
 	?>
 

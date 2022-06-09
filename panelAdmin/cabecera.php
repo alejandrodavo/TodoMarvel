@@ -50,7 +50,7 @@ if($usuario === "admin"){
                 <li><a href="index.php?p=listado">PDF</a></li>
                 <li><a href="index.php?p=p1">USUARIOS</a></li>
                 <li><a href="index.php?p=pA">PETICIONES</a></li>
-                <li><a href="index.php?p=pM">PERSONAJES</a></li>
+                <li><a href="index.php?p=pPer">PERSONAJES</a></li>
                 <li><a href="../home">VOLVER</a></li>
                 <li><form method="POST" action="<?php $_SERVER['PHP_SELF']?>"><input style="background-color:transparent;border:0px solid transparent;color:white;font-weight:bold;cursor:pointer;" type="submit" value="SALIR" name="salir"></form></li>
             </ul>
