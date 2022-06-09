@@ -55,6 +55,26 @@ class Usuario{
 		
 	}
 
+    static function dameFotoUsuario($usuFoto){
+			$sql = "select avatar from usuarios
+			where username='$usuFoto'";
+			echo $sql;
+			$conexion=conectarBD();
+			$res=$conexion->query($sql);
+            if ($conexion->error!="") { 
+                echo "Error: La ejecución de la consulta falló debido a: \n"; 
+                echo "Query: " . $sql . "\n"; 
+                echo "Errno: " . $conexion->errno . "\n"; 
+                echo "Error: " . $conexion->error . "\n"; 
+                exit; 
+            }
+			$fila=$res->fetch_assoc();
+			desconectarBD($conexion);
+            echo $fila["avatar"];
+			return $fila['avatar'];
+		
+	}
+
     static function crearCuenta($correo, $usu, $pass, $nombre, $fechaN, $avatar){
 		$msg="";
 		$passEncrip=encripta($pass,'ENCRIPT');
@@ -216,6 +236,8 @@ class Usuario{
         desconectarBD($mysqli); 
         return $filas;
     }
+
+    
 
 }
 

@@ -1,5 +1,6 @@
 <?php
 session_start();
+include("assets/clases/usuarios.php");
 
 if(isset($_SESSION["usuario"])){
 $usuario = $_SESSION["usuario"];
@@ -31,24 +32,18 @@ $usuario = $_SESSION["usuario"];
 $msg="";
 $fotodef="assets/images/avatar/default.png";
 $errores="";
-if(isset($_POST['verFoto'])){
-    if(comprobarDatos($errores)){
-        $usr=new Usuario($_POST['nombre'],$_POST['pwd'],"");
-        $foto=$usr->dameFotoUsuario();
+
+        /*$foto=Usuario::dameFotoUsuario($_SESSION["usuario"]);
         if ($foto!=-1){
             $fotodef=$foto;
         }
         else /*usuario no existe con ese PWD*/
-            $errores.="Usuario o Pwd incorrectos";	
-    }
-}	
+            //$errores.="Foto no encontrada";	
 
 
 
-	$fotodef="assets/images/avatar/default.png";
-	if (isset($_SESSION["usuario"])){
-		$fotodef="assets/images/avatar/".$_SESSION["usuario"].".png";
-	}
+
+
     if(isset($_POST["logout"])){
         session_destroy();
         ?><script>window.location.assign("http://localhost/Marvel/TodoMarvel/home")</script><?php
@@ -91,10 +86,7 @@ if(isset($_POST['verFoto'])){
     }else{
   $usuario = "";
 
-  require("layout/header.php");
-  echo "<div style='margin-top:15%;'>
-            <h1 style='text-align:center'>Debes <a style='text-decoration:underline;color:black' href='login'>iniciar sesión</a> para ver el contenido</h1>
-        </div";
+
 }
 
 ?>
