@@ -58,6 +58,16 @@ class Personaje{
         desconectarBD($mysqli);
         return $fila;
     }
+    static function devolver_nombre($nom){
+        $filas = array();
+        $mysqli = conectarBD(); 
+        $sql="SELECT * FROM personaje where nombre = '$nom'";
+        $resultado = $mysqli->query($sql);
+        $fila = $resultado->fetch_assoc();
+        $resultado->free(); 
+        desconectarBD($mysqli);
+        return $fila;
+    }
     static function devolver_filas_ventana($cuantos,$inicio){
         $filas = array();
         $mysqli = conectarBD(); 

@@ -15,7 +15,7 @@ $filtro="";
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="robots" content="noindex" />
-    <title>Home</title>
+    <title>Personajes</title>
     <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
     <link rel="alternate" type="application/atom+xml" title="My Weblog feed" href="/feed/" />
     <link rel="search" type="application/opensearchdescription+xml" title="My Weblog search" href="opensearch.xml" />
@@ -35,7 +35,7 @@ $filtro="";
             <input type="checkbox" id="hamburguesa">
             <label for="hamburguesa" class="fa fa-bars" id="icono"></label>
             <ul class="menu">
-                <li><a class="seleccionado" href="home">Inicio</a></li>
+                <li><a href="home">Inicio</a></li>
                 <li><a class="seleccionado" href="personajes">Personajes</a></li>
                 <li><a href="pedidos">Pedidos</a></li>
                 <li><a href="contacto">Contacto</a></li>
@@ -112,9 +112,6 @@ echo "<div>";
 ?>
 
 
-
-
-<br>
 </main>
 
 
