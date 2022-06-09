@@ -1,7 +1,10 @@
 <?PHP
 // Incluir bibliotecas de funciones
    require("usuarios.php");
+   
    $totalUsuarios=Usuario::filas_totales();
+   $totalUsuarios=Usuario::filas_totales();
+
 
 ?>
 <h2 style="text-align:center;margin-top:80px;">Estadisticas de la página</h2>
