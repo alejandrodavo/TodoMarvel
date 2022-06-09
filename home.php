@@ -52,7 +52,7 @@ $usuario = $_SESSION["usuario"];
             <label for="hamburguesa" class="fa fa-bars" id="icono"></label>
             <ul class="menu">
                 <li><a class="seleccionado" href="#">Inicio</a></li>
-                <li><a href="personaje">Personajes</a></li>
+                <li><a href="personajes">Personajes</a></li>
                 <li><a href="pedidos">Pedidos</a></li>
                 <li><a href="contacto">Contacto</a></li>
                 <li><a href="blog">Blog</a></li>
@@ -88,16 +88,9 @@ foreach($filas as $fila){
    echo "<section><div id='servs'>";
    echo "<img src='assets/images/personajes/{$fila['imagen']}' alt='{$fila['nombre']}'>";
    echo '<div id="text-bloq">';
-   echo "<a href='personaje?p={$fila['id_personaje']}' target=_blank><h3>{$fila['nombre']}</h3></a>";
+   echo "<a href='personaje?p={$fila['nombre']}' target=_blank><h3>{$fila['nombre']}</h3></a>";
    echo "<span>{$fila['afiliacion']} - {$fila['tipo']}</span><br><br>";
    echo "<p>{$fila['descripcion']}</p></div></div></section>";
-   //echo "<td data-label='ID Personaje'>".$fila['id_personaje']."</td><td data-label='Nombre'>".$fila['nombre']."</td><td data-label='Tipo'>".$fila['tipo']."</td><td data-label='Afiliacion'>".$fila['afiliacion']."</td><td data-label='Descripcion'>".
-   //$fila['descripcion']."<td data-label='Imagen'><img style='border-radius:100%;box-shadow:rgba(0, 0, 0, 0.5) 3px 3px 10px 0px;' height='40px' width='40px' src='$rutaImagenes".$fila['imagen']."'></td>";
-   //echo "<td data-label='Borrar' align='center'><a href='".$_SERVER['PHP_SELF']."?p=pPerB&id=".$fila['id_personaje']."&n=".$fila['nombre']."&img=".$fila['imagen']."'>
-  // <img height='30px' width='30px' src='images/papelera.png'></a></td>";
-   //echo "<td data-label='Modificar' align='center'><a href='".$_SERVER['PHP_SELF']."?p=pPerM&id=".$fila['id_personaje']."&n=".$fila['nombre']."&img=".$fila['imagen']."'>
-   //<img height='30px' width='30px' src='images/edit.png'></a></td>";
-   //echo "</tr>";
    $cont++;
    
 }

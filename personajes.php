@@ -6,6 +6,8 @@ $usuario = $_SESSION["usuario"];
 }else{
   $usuario = "";
 }
+$filtro="";
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
@@ -33,7 +35,8 @@ $usuario = $_SESSION["usuario"];
             <input type="checkbox" id="hamburguesa">
             <label for="hamburguesa" class="fa fa-bars" id="icono"></label>
             <ul class="menu">
-                <li><a class="seleccionado" href="#">Inicio</a></li>
+                <li><a class="seleccionado" href="home">Inicio</a></li>
+                <li><a class="seleccionado" href="personajes">Personajes</a></li>
                 <li><a href="pedidos">Pedidos</a></li>
                 <li><a href="contacto">Contacto</a></li>
                 <li><a href="blog">Blog</a></li>
@@ -46,142 +49,73 @@ $usuario = $_SESSION["usuario"];
         </div>
     </header>
     
-  <main>
+
+    <main>
+
+
+
+
+
+    
+
+<h2 class="tit"><a href="personajes">PERSONAJES</a><br>
+<form method="POST" action="<?php $_SERVER['PHP_SELF']?>">
+      <select name="filtro">
+        <option value="Todos"<?php if($filtro=="Todos") echo "selected='selected'" ?>>Todos</option>
+        <option value="Pelicula"<?php if($filtro=="Pelicula") echo "selected='selected'" ?>>Peliculas</option>
+        <option value="Comic"<?php if($filtro=="Comic") echo "selected='selected'" ?>>Comics</option>
+        <option value="Villano"<?php if($filtro=="Villano") echo "selected='selected'" ?>>Villanos</option>
+        <option value="Heroes"<?php if($filtro=="Heroes") echo "selected='selected'" ?>>Heroes</option>
+    </select>
+    <input type="submit" value="Filtrar" name="filtrar">
+    
+    </form></h2>
 
 <?php
 
+require("panelAdmin/Personaje.php");
+$inicio=0;
+$cuantos=4;
 
+if(isset($_POST["filtrar"])){
+  $filtro=$_POST["filtro"];
+  $filas=Personaje::devolver_filas_Filtro($filtro);
+}else{
+  $filas=Personaje::devolver_todas_filas();
+} 
+//echo "<div id='imagenes'>";
+$rutaImagenes="../assets/images/personajes/";
+$cont=0;
+$saltos=[0,4,8,12,16];
+foreach($filas as $fila){ 
+if(in_array($cont,$saltos)){
+  if($cont!=0)
+  echo"</div>";
+  echo"<div id='imagenes'>";
+}
+
+echo "<section><div id='servs'>";
+echo "<img src='assets/images/personajes/{$fila['imagen']}' alt='{$fila['nombre']}'>";
+echo '<div id="text-bloq">';
+echo "<a href='personaje?p={$fila['nombre']}' target=_blank><h3>{$fila['nombre']}</h3></a>";
+echo "<span>{$fila['afiliacion']} - {$fila['tipo']}</span><br><br>";
+echo "<p>{$fila['descripcion']}</p></div></div></section>";
+if(in_array($cont,$saltos)){
+  if($cont!=0)
+  echo"";
+}
+$cont++;
+
+}
+echo "<div>";
 
 ?>
 
-    <section>
-      <h1>Título 1</h1>
-      <article>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-        pariatur.</article>
-    </section>
-    <br>
-    <section>
-      <h1>Título 2</h1>
-      <article>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-        pariatur.</article>
-    </section>
-    <br>
-    <section>
-      <h1>Título 3</h1>
-      <article>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-        pariatur.</article>
-    </section>
-    <br>
-    <section>
-      <h1>Título 4</h1>
-      <article>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-        pariatur.</article>
-    </section>
-    <br>
-    <section>
-      <h1>Título 5</h1>
-      <article>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-        pariatur.</article>
-    </section>
-    <br>
-
-    <h2 class="tit"><a href="servicios.html">SERVICIOS</a></h2>
-    <div id="imagenes">
-
-    <section>
-        <div id="servs">
-            <img src="assets/images/clase1.jpg" alt="Andando">
-            <div id="text-bloq">
-              <a href=""><h3>ESO</h3></a>
-                <span>MAGNICA KICTAM - LOREMIPSUM</span><br><br>
-                <P>Cras ultricies ligula sed magna dictum porta auris blandita.</P>
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <div id="servs">
-            <img src="assets/images/clase2.jpg" alt="Zapatos">
-            <div id="text-bloq">
-                <a href=""><h3>BACHILLER</h3></a>
-                <span>MAGNICA KICTAM - LOREMIPSUM</span><br><br>
-                <P>Cras ultricies ligula sed magna dictum porta auris blandita.</P>
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <div id="servs">
-            <img src="assets/images/clase3.jpg" alt="Tenedores">
-            <div id="text-bloq">
-              <a href=""><h3>CICLOS</h3></a>
-                <span>MAGNICA KICTAM - LOREMIPSUM</span><br><br>
-                <P>Cras ultricies ligula sed magna dictum porta auris blandita.</P>
-            </div>
-        </div>
-    </section>
-
-    <section>
-      <div id="servs">
-          <img src="assets/images/clase4.jpg" alt="Tenedores">
-          <div id="text-bloq">
-            <a href=""><h3>UNIVERSIDAD</h3></a>
-              <span>MAGNICA KICTAM - LOREMIPSUM</span><br><br>
-              <P>Cras ultricies ligula sed magna dictum porta auris blandita.</P>
-          </div>
-      </div>
-  </section>
-    </div>
-  <h2 class="tit"><a href="contacto.html">CONTACTO</a></h2>
-
-
-  <form action="">
-
-    <label for="nombre">Nombre</label><br>
-    <input type="text" name="nombre" class="field" required=”true” placeholder="Tu nombre"><br>
-
-    <label for="email">Email</label><br>
-    <input type="email" name="email" class="field" required=”true” placeholder="Email"><br>
-
-    <label for="edad">Edad</label><br>
-    <input type="text" name="edad" class="field" required=”true” placeholder="Tu edad"><br>
-
-    <label for="telefono">Teléfono</label><br>
-    <input pattern="{1,9}" type="tel" name="telefono" class="field" required=”true” placeholder="Tu número de telefono"><br>
-
-    <label for="mensaje">Mensaje</label><br>
-    <textarea name="mensaje"class="field" required=”true” placeholder="Mensaje"></textarea><br>
-
-    <label>Acepta Política de Privacidad </label>
-    <input type="checkbox" id="privacidad" value="Politica_Privacidad" required=”true”>
-    <br>
-
-    <label>Acepta Política de Cookies </label>
-    <input type="checkbox" id="cookies" value="Politica_Cookies" required=”true”>
-    <br>
-    
 
 
 
-    <p class="centrar">
-    <input type="submit" class="boton" value="Enviar"/>
-    </p>
-    
-
-
-  </form>
-
-  </main>
+<br>
+</main>
 
 
   <footer>

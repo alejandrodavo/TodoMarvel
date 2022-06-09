@@ -85,6 +85,28 @@ class Personaje{
     }
 
 
+    static function devolver_filas_Filtro($filtro){
+        $filas = array();
+        $mysqli = conectarBD(); 
+        if($filtro=="Comic" || $filtro=="Pelicula")
+        $sql="SELECT * FROM personaje where tipo='$filtro'";
+        else if($filtro=="Villano")
+        $sql="SELECT * FROM personaje where afiliacion='Villano'";
+        else if($filtro=="Todos")
+        $sql="SELECT * FROM personaje";
+        else
+        $sql="SELECT * FROM personaje where afiliacion!='Villano'";
+
+        $resultado = $mysqli->query($sql);
+        while($fila = $resultado->fetch_assoc()){ 
+            $filas[] = $fila;
+        }
+        $resultado->free(); 
+        desconectarBD($mysqli); 
+        return $filas;
+    }
+
+
 
     static function valores_select($campo){
         $valores=array();
