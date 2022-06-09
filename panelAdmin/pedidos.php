@@ -40,8 +40,21 @@ class Pedido{
     }
 
     function insertar(){	
-		$conexion = conectarBD();	
-		$sql = "insert into pedidos values(null,'$this->id_usuario','$this->username', '$this->pedido','$this->tipo', '$this->comentario', '$this->fecha', '$this->estado')";	
+		$conexion = conectarBD();
+        $sql = "select id_usuario from usuarios where username='$this->username'";	
+		$idUsu = $conexion->query ($sql);
+        $fila = $idUsu->fetch_assoc();
+		if ($conexion->error!="") { 
+			echo "Error: La ejecución de la consulta falló debido a: \n"; 
+			echo "Query: " . $sql . "<br>\n"; 
+			echo "Errno: " . $conexion->errno . "<br>\n"; 
+			echo "Error: " . $conexion->error . "<br>\n"; 
+			exit; 
+		}
+        $idUsu=$fila["id_usuario"];
+		desconectarBD($conexion);
+        $conexion = conectarBD();
+		$sql = "insert into pedidos values(null,'$idUsu','$this->username', '$this->pedido','$this->tipo', '$this->comentario', '$this->fecha', '$this->estado')";	
 		$res = $conexion->query ($sql);
 		if ($conexion->error!="") { 
 			echo "Error: La ejecución de la consulta falló debido a: \n"; 
@@ -69,10 +82,10 @@ class Pedido{
 		return $res;
 	}
 
-    static function devolver_todas_filas(){
+    static function devolver_todas_filas_Usuario(){
         $filas = array();
         $mysqli = conectarBD(); 
-        $sql="SELECT * FROM pedidos";
+        $sql="SELECT * FROM usuarios";
         $resultado = $mysqli->query($sql);
         while($fila = $resultado->fetch_assoc()){ 
             $filas[] = $fila;
