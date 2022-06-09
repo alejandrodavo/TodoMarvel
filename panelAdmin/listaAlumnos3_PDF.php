@@ -18,7 +18,7 @@
 <?php
 	$cabecera=false;
 	$conexion= new mysqli("localhost","root","","todomarvel");
-	$result=$conexion->query("Select * from pedidos where estado!='Publicado'");
+	$result=$conexion->query("Select * from pedidos where estado!='Publicado' and estado!='Cancelado'");
 	echo "<table border='1'>";
 	while($fila=$result->fetch_assoc()){
 		if(!$cabecera){

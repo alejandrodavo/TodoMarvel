@@ -71,6 +71,19 @@ class Personaje{
         return $filas;
     }
 
+    static function devolver_filas_ventanaID($cuantos,$inicio){
+        $filas = array();
+        $mysqli = conectarBD(); 
+        $sql="SELECT * FROM personaje order by id_personaje desc limit $inicio,$cuantos";
+        $resultado = $mysqli->query($sql);
+        while($fila = $resultado->fetch_assoc()){ 
+            $filas[] = $fila;
+        }
+        $resultado->free(); 
+        desconectarBD($mysqli); 
+        return $filas;
+    }
+
 
 
     static function valores_select($campo){

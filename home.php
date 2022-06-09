@@ -23,6 +23,24 @@ $usuario = $_SESSION["usuario"];
         href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fancybox/source/jquery.fancybox.css" type="text/css" media="screen" />
+  <script src="assets/jquery-3.6.0.min.js"></script>
+	<script type="text/javascript" src="assets/fancybox/source/jquery.fancybox.pack.js"></script>
+
+    	<!-- Add fancyBox -->
+      <link rel="stylesheet" href="assets/fancybox/source/jquery.fancybox.css" type="text/css" media="screen" />
+	<script type="text/javascript" src="assets/fancybox/source/jquery.fancybox.pack.js"></script>
+	
+	<!-- Optionally add helpers - button, thumbnail and/or media -->
+	<link rel="stylesheet" href="assets/fancybox/source/helpers/jquery.fancybox-buttons.css" type="text/css" media="screen" />
+	<script type="text/javascript" src="assets/fancybox/source/helpers/jquery.fancybox-buttons.js"></script>
+	<script type="text/javascript" src="assets/fancybox/source/helpers/jquery.fancybox-media.js"></script>
+	
+	<link rel="stylesheet" href="assets/fancybox/source/helpers/jquery.fancybox-thumbs.css" type="text/css" media="screen" />
+	<script type="text/javascript" src="assets/fancybox/source/helpers/jquery.fancybox-thumbs.js"></script>
+  <script src="./assets/js/fancybox.js"></script>
+
+
 
 </head>
 
@@ -34,7 +52,8 @@ $usuario = $_SESSION["usuario"];
             <label for="hamburguesa" class="fa fa-bars" id="icono"></label>
             <ul class="menu">
                 <li><a class="seleccionado" href="#">Inicio</a></li>
-                <li><a href="servicios">Servicios</a></li>
+                <li><a href="personaje">Personajes</a></li>
+                <li><a href="pedidos">Pedidos</a></li>
                 <li><a href="contacto">Contacto</a></li>
                 <li><a href="blog">Blog</a></li>
                 <?php
@@ -48,95 +67,66 @@ $usuario = $_SESSION["usuario"];
     
   <main>
 
-    <section>
-      <h1>Título 1</h1>
-      <article>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-        pariatur.</article>
-    </section>
-    <br>
-    <section>
-      <h1>Título 2</h1>
-      <article>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-        pariatur.</article>
-    </section>
-    <br>
-    <section>
-      <h1>Título 3</h1>
-      <article>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-        pariatur.</article>
-    </section>
-    <br>
-    <section>
-      <h1>Título 4</h1>
-      <article>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-        pariatur.</article>
-    </section>
-    <br>
-    <section>
-      <h1>Título 5</h1>
-      <article>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-        pariatur.</article>
-    </section>
-    <br>
 
-    <h2 class="tit"><a href="servicios.html">SERVICIOS</a></h2>
+
+    
+
+    <h2 class="tit"><a href="personajes">ÚLTIMOS PERSONAJES</a></h2>
     <div id="imagenes">
+    <?php
 
-    <section>
-        <div id="servs">
-            <img src="assets/images/clase1.jpg" alt="Andando">
-            <div id="text-bloq">
-              <a href=""><h3>ESO</h3></a>
-                <span>MAGNICA KICTAM - LOREMIPSUM</span><br><br>
-                <P>Cras ultricies ligula sed magna dictum porta auris blandita.</P>
-            </div>
-        </div>
-    </section>
+require("panelAdmin/Personaje.php");
+$inicio=0;
+$cuantos=4;
+$filas=Personaje::devolver_filas_ventanaID($cuantos,$inicio);
 
-    <section>
-        <div id="servs">
-            <img src="assets/images/clase2.jpg" alt="Zapatos">
-            <div id="text-bloq">
-                <a href=""><h3>BACHILLER</h3></a>
-                <span>MAGNICA KICTAM - LOREMIPSUM</span><br><br>
-                <P>Cras ultricies ligula sed magna dictum porta auris blandita.</P>
-            </div>
-        </div>
-    </section>
 
-    <section>
-        <div id="servs">
-            <img src="assets/images/clase3.jpg" alt="Tenedores">
-            <div id="text-bloq">
-              <a href=""><h3>CICLOS</h3></a>
-                <span>MAGNICA KICTAM - LOREMIPSUM</span><br><br>
-                <P>Cras ultricies ligula sed magna dictum porta auris blandita.</P>
-            </div>
-        </div>
-    </section>
+$rutaImagenes="../assets/images/personajes/";
+$cont=2;
+foreach($filas as $fila){ 
 
-    <section>
-      <div id="servs">
-          <img src="assets/images/clase4.jpg" alt="Tenedores">
-          <div id="text-bloq">
-            <a href=""><h3>UNIVERSIDAD</h3></a>
-              <span>MAGNICA KICTAM - LOREMIPSUM</span><br><br>
-              <P>Cras ultricies ligula sed magna dictum porta auris blandita.</P>
-          </div>
-      </div>
-  </section>
+   echo "<section><div id='servs'>";
+   echo "<img src='assets/images/personajes/{$fila['imagen']}' alt='{$fila['nombre']}'>";
+   echo '<div id="text-bloq">';
+   echo "<a href='personaje?p={$fila['id_personaje']}' target=_blank><h3>{$fila['nombre']}</h3></a>";
+   echo "<span>{$fila['afiliacion']} - {$fila['tipo']}</span><br><br>";
+   echo "<p>{$fila['descripcion']}</p></div></div></section>";
+   //echo "<td data-label='ID Personaje'>".$fila['id_personaje']."</td><td data-label='Nombre'>".$fila['nombre']."</td><td data-label='Tipo'>".$fila['tipo']."</td><td data-label='Afiliacion'>".$fila['afiliacion']."</td><td data-label='Descripcion'>".
+   //$fila['descripcion']."<td data-label='Imagen'><img style='border-radius:100%;box-shadow:rgba(0, 0, 0, 0.5) 3px 3px 10px 0px;' height='40px' width='40px' src='$rutaImagenes".$fila['imagen']."'></td>";
+   //echo "<td data-label='Borrar' align='center'><a href='".$_SERVER['PHP_SELF']."?p=pPerB&id=".$fila['id_personaje']."&n=".$fila['nombre']."&img=".$fila['imagen']."'>
+  // <img height='30px' width='30px' src='images/papelera.png'></a></td>";
+   //echo "<td data-label='Modificar' align='center'><a href='".$_SERVER['PHP_SELF']."?p=pPerM&id=".$fila['id_personaje']."&n=".$fila['nombre']."&img=".$fila['imagen']."'>
+   //<img height='30px' width='30px' src='images/edit.png'></a></td>";
+   //echo "</tr>";
+   $cont++;
+   
+}
+
+?>
+
+    
     </div>
-  <h2 class="tit"><a href="contacto.html">CONTACTO</a></h2>
+
+    <h2 class="tit"><a href="#">GALERIA DE IMAGENES</a></h2>
+    <div id="wallpapers">
+      <div id="galeria">
+          <a href="assets/images/galeria/wallpaperDoctorStrange.jpg" rel="galeria" title="Doctor Strange">
+              <img src="assets/images/galeria/wallpaperDoctorStrange.jpg" alt="Doctor Strange"/></a>
+          <a href="assets/images/galeria/wallpaperSpiderman.jpg" rel="galeria" title="Spiderman No Way Home">
+              <img src="assets/images/galeria/wallpaperSpiderman.jpg" alt="Spiderman No Way Home"/></a>
+          <a href="assets/images/galeria/wallpaperMoonKnight.png" rel="galeria" title="Moon Knight">
+              <img src="assets/images/galeria/wallpaperMoonKnight.png" alt="Moon Knight"/></a>
+          <a href="assets/images/galeria/wallpaperLoki.jpg" rel="galeria" title="Loki">
+              <img src="assets/images/galeria/wallpaperLoki.jpg" alt="Loki"/></a>
+          <a href="assets/images/galeria/wallpaperDaredevil.jpg" rel="galeria" title="Daredevil">
+              <img src="assets/images/galeria/wallpaperDaredevil.jpg" alt="Daredevil"/></a>
+          <a href="assets/images/galeria/wallpaperHawkeye.jpg" rel="galeria" title="Hawkeye">
+              <img src="assets/images/galeria/wallpaperHawkeye.jpg" alt="Hawkeye"/></a>
+      </div>
+    </div>
+    <br>
+
+  <h2 class="tit"><a href="contacto">CONTACTO</a></h2>
 
 
   <form action="">
@@ -182,11 +172,10 @@ $usuario = $_SESSION["usuario"];
     <p>&copyTodo Marvel 2022</p>
     <a href="#">Politica de privacidad y cookies</a><br>
     <div class="sociales">
-      <a class="fa fa-facebook" href="#"></a>
-      <a class="fa fa-twitter" href="#"></a>
-      <a class="fa fa-rss" href="#"></a>
-      <a class="fa fa-envelope" href="#"></a>
-      <a class="fa fa-instagram" href="#"></a>
+      <a class="fa fa-facebook" href="facebook.com"></a>
+      <a class="fa fa-twitter" href="twitter.com"></a>
+      <a class="fa fa-envelope" href="mailto:alexdavomar@gmail.com"></a>
+      <a class="fa fa-instagram" href="instagram.com"></a>
     </div>
   </footer>
 

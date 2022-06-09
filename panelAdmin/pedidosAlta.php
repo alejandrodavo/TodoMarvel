@@ -124,7 +124,10 @@ if (isset($_POST['alta'])){
 					</datalist></select>
 				</td></tr>
 				<tr><td align="right">PEDIDO: </td><td align="left"><input type="text" name="pedido" size="30" maxlength="30" placeholder="Pedido"></td></tr>
-				<tr><td align="right">TIPO: </td><td align="left"><input type="text" name="tipo" size="30" maxlength="30" placeholder="Tipo"></td></tr>
+				<tr><td align="right">TIPO: </td><td align="left">					<select name="tipo">
+						<option value="Comic">Comic</option>
+						<option value="Pelicula">Pelicula</option>		
+					</select></td></tr>
 				<tr><td align="right">COMENTARIO: </td><td align="left"><input type="text" name="comentario" size="30" maxlength="200" placeholder="Comentario"></td></tr>
 				<tr><td align="right">FECHA: </td><td align="left"><input type="date" name="fecha" size="3" maxlength="2" placeholder="Fecha"></td></tr>
 				<tr><td align="right">ESTADO: </td><td align="left">

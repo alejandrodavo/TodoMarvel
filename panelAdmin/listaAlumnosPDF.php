@@ -41,7 +41,7 @@ $pdf->SetFont('Times','',12);
 
 $cabecera=false;
 $conexion= new mysqli("localhost","root","","todomarvel");
-$result=$conexion->query("Select username, pedido, tipo, comentario, fecha from pedidos where estado!='Publicado'");
+$result=$conexion->query("Select pedido, tipo, fecha, comentario from pedidos where estado!='Publicado'");
 
 while($fila=$result->fetch_assoc()){
 	if(!$cabecera){

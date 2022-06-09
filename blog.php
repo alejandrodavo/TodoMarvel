@@ -33,11 +33,11 @@ $usuario = $_SESSION["usuario"];
         <label for="hamburguesa" class="fa fa-bars" id="icono"></label>
         <ul class="menu">
           <li><a href="home">Inicio</a></li>
-          <li><a href="servicios">Servicios</a></li>
+          <li><a href="pedidos">Pedidos</a></li>
           <li><a href="contacto">Contacto</a></li>
           <li><a class="seleccionado" href="#">Blog</a></li>
           <?php
-                if($usuario==="admin") echo '<li><a href="panel">Admin</a></li>';
+                if($usuario==="admin") echo '<li><a href="panelAdmin/index.php">Admin</a></li>';
                 if($usuario==="") echo '<li><a href="login">Login</a></li>';
                 if($usuario!="" && $usuario != "admin") echo"<li><a href='perfil?usuario=$usuario'>$usuario</a></li>"
                 ?>
