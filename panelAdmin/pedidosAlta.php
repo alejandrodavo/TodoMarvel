@@ -30,15 +30,15 @@ foreach($filas as $fila){
 		   echo "$indice";
 		   echo "</th>";
 	   }
-	   echo "<th>Modificar</th>";
+	   echo "<th>Modificar estado</th>";
 	   echo "</tr>";
    }
    $cont++;
-   echo "<tr></thead><tbody>";
+   echo "</thead><tbody><tr>";
    echo "<td data-label='ID Pedido'>".$fila['id_pedido']."</td><td data-label='ID Usuario'>".$fila['id_usuario']."</td><td data-label='Usuario'>".$fila['username']."</td><td data-label='Pedido'>".$fila['pedido']."</td><td data-label='Tipo'>".
    $fila['tipo']."</td><td data-label='Comentario'>".$fila['comentario'];
    echo "<td data-label='Fecha' align='center'>".$fila['fecha']."</td><td data-label='Estado' align='center'>".$fila['estado']."</td>";
-   echo "<td data-label='Modificar' align='center'><a href='".$_SERVER['PHP_SELF']."?p=p2&id=".$fila['id_usuario']."&n=".$fila['username']."'>
+   echo "<td data-label='Modificar estado' align='center'><a href='".$_SERVER['PHP_SELF']."?p=pAm&id=".$fila['id_pedido']."'>
    <img height='30px' width='30px' src='images/edit.png'></a></td>";
    echo "</tr>";
 }

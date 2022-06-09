@@ -33,7 +33,7 @@
 		$actual="BORRAR ASIGNATURAS";
 	}
 	if($opcion=="pAm"){
-		$pagina="asignaturasModificar.php";
+		$pagina="pedidosModificar.php";
 		$actual="MODIFICAR ASIGNATURAS";
 	}
 	

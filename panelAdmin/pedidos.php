@@ -56,7 +56,7 @@ class Pedido{
 
     function modificar($idModif){	
 		$conexion = conectarBD();	
-        $sql = "update asignaturas set id_asignatura='$this->id_asignatura', nombre='$this->nombre', horas='$this->horas' where id_asignatura='$idModif'";
+        $sql = "update pedidos set estado='$this->estado' where id_pedido='$idModif'";
 		$res = $conexion->query ($sql);
 		if ($conexion->error!="") { 
 			echo "Error: La ejecución de la consulta falló debido a: \n"; 

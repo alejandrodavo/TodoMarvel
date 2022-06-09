@@ -35,7 +35,7 @@ foreach($filas as $fila){
 	   echo "</tr>";
    }
    $cont++;
-   echo "<tr></thead><tbody>";
+   echo "</thead><tbody><tr>";
    echo "<td data-label='ID Usuario'>".$fila['id_usuario']."</td><td data-label='Correo'>".$fila['correo']."</td><td data-label='Usuario'>".$fila['username']."</td><td data-label='Contraseña'>".$fila['password']."</td><td data-label='Nombre'>".
    $fila['nombre']."</td><td data-label='Fecha Nacimiento'>".$fila['fechaNacimiento']."</td><td data-label='Avatar'><img style='border-radius:100%;box-shadow:rgba(0, 0, 0, 0.5) 3px 3px 10px 0px;' height='40px' width='40px' src='../".$fila['avatar']."'></td>";
    echo "<td data-label='Borrar' align='center'><a href='".$_SERVER['PHP_SELF']."?p=p3&id=".$fila['id_usuario']."&n=".$fila['username']."'>
