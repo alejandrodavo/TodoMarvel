@@ -69,7 +69,6 @@ if(isset($_POST["recuperar"])){
           <li><a href="home">Inicio</a></li>
           <li><a href="servicios">Servicios</a></li>
           <li><a href="contacto">Contacto</a></li>
-          <li><a href="blog">Blog</a></li>
           <li><a href="login">Login</a></li>
         </ul>
     </div>

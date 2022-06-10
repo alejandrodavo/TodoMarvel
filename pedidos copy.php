@@ -107,7 +107,7 @@ class Pedido{
     static function devolver_filas_ventana($cuantos,$inicio){
         $filas = array();
         $mysqli = conectarBD(); 
-        $sql="SELECT * FROM pedidos order by id_pedido desc limit $inicio,$cuantos";
+        $sql="SELECT * FROM pedidos order by fecha desc limit $inicio,$cuantos";
         $resultado = $mysqli->query($sql);
         while($fila = $resultado->fetch_assoc()){ 
             $filas[] = $fila;

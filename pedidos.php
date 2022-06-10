@@ -31,10 +31,13 @@ if(!isset($_SESSION["usuario"])){
   <link rel="stylesheet" href="assets/css/formulario-pedidos.css">
   <script src="assets/jquery-3.6.0.min.js"></script>
   <script src="assets/js/apiMarvel.js"></script>
+  <script src="assets/js/validarEventListener.js"></script>
+
 
 </head>
 
 <body>
+  
 
   <header>
     <div id="bloq">
@@ -45,12 +48,11 @@ if(!isset($_SESSION["usuario"])){
                 <li><a href="home">Inicio</a></li>
                 <li><a href="personajes">Personajes</a></li>
                 <li><a class="seleccionado" href="pedidos">Pedidos</a></li>
-                <li><a href="contacto">Contacto</a></li>
                 <li><a href="blog">Blog</a></li>
           <?php
                 if($usuario==="admin") echo '<li><a href="panelAdmin/index.php">Admin</a></li>';
                 if($usuario==="") echo '<li><a href="login">Login</a></li>';
-                if($usuario!="" && $usuario != "admin") echo"<li><a href='perfil?usuario=$usuario'>$usuario</a></li>"
+                if($usuario!="" && $usuario != "admin") echo"<li>$usuario</li>"
                 ?>
         </ul>
     </div>
@@ -66,28 +68,18 @@ if(!isset($_SESSION["usuario"])){
 
 
   </main>
-  <form action="#" id="contact_form" class="contact-form contact-grid">
+  <form method="POST" action="<?php $_SERVER['PHP_SELF']?>" id="contact_form" class="contact-form contact-grid">
     
-    <div class="form-field name">
-      <label class="label" for="fname">Nombre</label>
-      <input id="fname" type="text" <?php echo "value='{$_SESSION['usuario']}'";?>required>
-    </div>
-  
     <div class="form-field pedido">
       <label class="label" for="pedido">Pedido</label>
-      <input list="pedidos" name="pedido" id="pedidoInput">
+      <input onmouseover="ActivaFoco(pedidoInput)" onmouseout="quitaFoco(pedidoInput)" list="pedidos" name="pedido" id="pedidoInput">
         <datalist id="pedidos">
         </datalist>
     </div>
       
-    <div class="form-field phone">
-      <label class="label" for="phone"></label>
-      <input id="phone" type="tel" required>
-    </div>
-      
     <div class="form-field subject">
       <label class="label">Tipo</label>
-      <select name="subject" form="contact_form" required>
+      <select onmouseover="ActivaFoco(tipo)" onmouseout="quitaFoco(tipo)" name="tipo" id="tipo" form="contact_form" required>
         <option value="Comic" selected>Comic</option>
         <option value="Pelicula">Pelicula</option>
       </select>
@@ -95,11 +87,13 @@ if(!isset($_SESSION["usuario"])){
       
     <div class="form-field comment-box">
       <label class="label">Comentario</label>
-      <textarea name="comment-box" id="message" maxlenght="200"></textarea>
+      <textarea onmouseover="ActivaFoco(message)" onmouseout="quitaFoco(message)" name="comentario" id="message" maxlenght="200"></textarea>
     </div>
     
     <div class="submit-button">
-      <button id="submit-btn" class="btn" type="submit" value="submit" onclick="validateForm()">submit</button>
+      <button id="submit-btn" class="btn" type="submit" name="pedir">CREAR PEDIDO</button>
+      <span id="error"></span>
+
     </div>
       
   </form>
@@ -128,4 +122,29 @@ if(!isset($_SESSION["usuario"])){
 
 }
 
-?>
+
+require("pedidos copy.php");
+
+
+
+$username=$_SESSION["usuario"];
+$pedido="";
+$tipo="";
+$comentario="";
+$fecha=date("Y-m-d");
+$estado="Enviado";
+
+if (isset($_POST['pedir'])){
+	$pedido=$_POST["pedido"];
+	$tipo=$_POST["tipo"];
+	$comentario=$_POST["comentario"];
+
+  $pedidoN = new Pedido(null,null, $username, $pedido, $tipo, $comentario, $fecha, $estado);
+  $conexion = conectarBD();
+  $res=$pedidoN->insertar();
+  if($res>0)
+    echo "<br/>$res Pedido correctamente";
+  else
+    echo "<br/>Fallo al crear pedido";
+}
+  ?>

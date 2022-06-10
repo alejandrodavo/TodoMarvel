@@ -67,7 +67,6 @@ if(isset($_POST["login"])){
                 <li><a href="personajes">Personajes</a></li>
                 <li><a href="pedidos">Pedidos</a></li>
                 <li><a href="contacto">Contacto</a></li>
-                <li><a href="blog">Blog</a></li>
                 <li><a class="seleccionado" href="login">Login</a></li>
             </ul>
         </div>

@@ -54,12 +54,11 @@ $usuario = $_SESSION["usuario"];
                 <li><a class="seleccionado" href="#">Inicio</a></li>
                 <li><a href="personajes">Personajes</a></li>
                 <li><a href="pedidos">Pedidos</a></li>
-                <li><a href="contacto">Contacto</a></li>
                 <li><a href="blog">Blog</a></li>
                 <?php
                 if($usuario==="admin") echo '<li><a href="panelAdmin/index.php">Admin</a></li>';
                 if($usuario==="") echo '<li><a href="login">Login</a></li>';
-                if($usuario!="" && $usuario != "admin") echo"<li><a href='perfil?usuario=$usuario'>$usuario</a></li>"
+                if($usuario!="" && $usuario != "admin") echo"<li>$usuario</li>"
                 ?>
             </ul>
         </div>
@@ -119,44 +118,6 @@ foreach($filas as $fila){
     </div>
     <br>
 
-  <h2 class="tit"><a href="contacto">CONTACTO</a></h2>
-
-
-  <form action="">
-
-    <label for="nombre">Nombre</label><br>
-    <input type="text" name="nombre" class="field" required=”true” placeholder="Tu nombre"><br>
-
-    <label for="email">Email</label><br>
-    <input type="email" name="email" class="field" required=”true” placeholder="Email"><br>
-
-    <label for="edad">Edad</label><br>
-    <input type="text" name="edad" class="field" required=”true” placeholder="Tu edad"><br>
-
-    <label for="telefono">Teléfono</label><br>
-    <input pattern="{1,9}" type="tel" name="telefono" class="field" required=”true” placeholder="Tu número de telefono"><br>
-
-    <label for="mensaje">Mensaje</label><br>
-    <textarea name="mensaje"class="field" required=”true” placeholder="Mensaje"></textarea><br>
-
-    <label>Acepta Política de Privacidad </label>
-    <input type="checkbox" id="privacidad" value="Politica_Privacidad" required=”true”>
-    <br>
-
-    <label>Acepta Política de Cookies </label>
-    <input type="checkbox" id="cookies" value="Politica_Cookies" required=”true”>
-    <br>
-    
-
-
-
-    <p class="centrar">
-    <input type="submit" class="boton" value="Enviar"/>
-    </p>
-    
-
-
-  </form>
 
   </main>
 

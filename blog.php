@@ -39,12 +39,11 @@ $usuario = $_SESSION["usuario"];
           <li><a href="home">Inicio</a></li>
           <li><a href="personajes">Personajes</a></li>
           <li><a href="pedidos">Pedidos</a></li>
-          <li><a href="contacto">Contacto</a></li>
           <li><a class="seleccionado" href="#">Blog</a></li>
           <?php
                 if($usuario==="admin") echo '<li><a href="panelAdmin/index.php">Admin</a></li>';
                 if($usuario==="") echo '<li><a href="login">Login</a></li>';
-                if($usuario!="" && $usuario != "admin") echo"<li><a href='perfil?usuario=$usuario'>$usuario</a></li>"
+                if($usuario!="" && $usuario != "admin") echo"<li>$usuario</li>"
                 ?>
         </ul>
     </div>

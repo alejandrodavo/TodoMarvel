@@ -24,6 +24,8 @@ if(isset($_SESSION["usuario"])){
         rel="stylesheet">
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+    <script src="assets/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/validarRegistro.js"></script>
 </head>
 
 
@@ -54,17 +56,17 @@ if(isset($_POST["login"])){
             $_SESSION["usuario"]=$us;
             ?>
             <script>
-                window.location.assign("http://localhost/Marvel/login")
+                              window.location.reload
+
             </script>
             <?php
         }
         else{
-            $error = "No se ha podido crear la cuenta.";
-            echo $error;
             session_destroy();
             ?>
             <script>
-                window.location.reload
+                window.location.assign("http://localhost/Marvel/TodoMarvel/login")
+
             </script>
             <?php
         }
@@ -78,10 +80,9 @@ if(isset($_POST["login"])){
             <label for="hamburguesa" class="fa fa-bars" id="icono"></label>
             <ul class="menu">
                 <li><a href="home">Inicio</a></li>
-                <li><a href="servicios">Servicios</a></li>
-                <li><a href="contacto">Contacto</a></li>
+                <li><a href="personajes">Personajes</a></li>
+                <li><a href="pedidos">Pedidos</a></li>
                 <li><a href="blog">Blog</a></li>
-                <li><a class="seleccionado" href="login">Login</a></li>
             </ul>
         </div>
     </header>
@@ -92,32 +93,34 @@ if(isset($_POST["login"])){
         <form method="POST" action="<?php $_SERVER['PHP_SELF']?>">
         <div class="row">
             <i class="fas fa-user"></i>
-            <input type="text" name="nombre" placeholder="Nombre" required>
+            <input type="text" name="nombre" id="nombre" placeholder="Nombre" required>
           </div>
           <div class="row">
             <i class="fas fa-user"></i>
-            <input type="text" name="usuario" placeholder="Usuario" required>
+            <input type="text" name="usuario" id="usuario" placeholder="Usuario" required>
           </div>
           <div class="row">
             <i class="fas fa-envelope"></i>
-            <input type="text" name="email" placeholder="Email" required>
+            <input type="text" name="email" id="email" placeholder="Email" required>
           </div>
           <div class="row">
             <i class="fas fa-lock"></i>
-            <input type="password" name="password" placeholder="Contraseña" required>
+            <input type="password" name="password" id="contraseña1" placeholder="Contraseña" required>
           </div>
           <div class="row">
             <i class="fas fa-lock"></i>
-            <input type="password" name="password2" placeholder="Repetir Contraseña" required>
+            <input type="password" name="password2" id="contraseña2" placeholder="Repetir Contraseña" required>
           </div>
           <div class="row">
             <i class="fas fa-calendar"></i>
-            <input type="date" name="fechaN" placeholder="Fecha de Nacimiento" required>
+            <input type="date" name="fechaN" id="fecha" placeholder="Fecha de Nacimiento" required>
           </div>
           <div class="row button">
             <input type="submit" value="Crear cuenta" name="login">
           </div>
-          <div class="signup-link">Ya eres miembro? <a href="login">Inicia sesión!</a></div>
+          <div class="signup-link">Ya eres miembro? <a href="login">Inicia sesión!</a><br>
+          <span id="error-password" style="color:red;font-size:0.75rem;"></span>
+          <p style="text-align:center;text-decoration:underline;"><?php if(!empty($error)){ echo $error;}?></p></div>
         </form>
       </div>
     </div>

@@ -2,6 +2,7 @@
   background: rgba(237,29,36,0.3);
 }
 .container{
+  
   max-width: 440px;
   padding: 0 50px;
   margin: 100px auto 170px auto;
@@ -30,8 +31,11 @@
   height: 45px;
   margin-bottom: 15px;
   position: relative;
+    z-index: 3;
+
 }
 .wrapper form .row input{
+  
   height: 100%;
   width: 78%;
   outline: none;

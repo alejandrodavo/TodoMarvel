@@ -1,5 +1,5 @@
 <?php
-include("assets/lib/conexion.php");
+include("conexion.php");
 include("assets/utils/utilidadCodif.php");
 class Usuario{
     private $id_usuario;

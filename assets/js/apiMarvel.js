@@ -1,56 +1,36 @@
-/*idM = $("#monitor").val()
-fetch('https://gateway.marvel.com:443/v1/public/characters?apikey=074227bf87c87cf63d85a9de5377e968')
-    .then(data => data.json())
-    .then(function (data) {
-        usuarios = data.data;
-        console.log(usuarios);
-        $("#nombreMonitor").val(data.name)
-        mon = data.name
-        $(div).append("<p>Monitor: <b>" + mon + "<p>")
-    })
-    .catch(function (error) {
-        console.log('Hubo un problema con la petición Fetch:' + error.message);
-    });
-mon = $("#nombreMonitor").val()
-
-
-
-
-function getMarvelResponse() {
-    var apiKey = "87165c2531d309ddf02d84f4ae2c5e02"; var titleKeyword = "wolverine"; //FIX ONE BELOW
-    var url = "http://gateway.marvel.com/v1/public/comics?ts=" + ts + "&hash=" + hash + "&apikey=" + apiKey;
-    var url = "http://gateway.marvel.com/v1/public/comics?ts=1457734667935&hash=hashcodehere&apikey=87165c2531d309ddf02d84f4ae2c5e02&title=wolverine";
-    alert(hash);
-    alert(url);
-    console.log(url);
-    $.ajax({
-         url: url, context: document.body 
-        }).done(function (data) {
-             $('#results').html('');*/
-
-
+//API DE MARVEL PARA QUE AL INTRODUCIR VALORES EN EL CAMPO PEDIDO, VAYA BUSCANDO LO QUE ESCRIBES EN LA API DE MARVEL CON TODOS LOS PERSONAJES QUE HAY//
 $(document).ready(function(){
+    //AL ESCRIBIR EN EL INPUT//
     $("#pedidoInput").keyup(function(){
+        //SI EL CAMPO NO ESTÁ VACIO//
         if($("#pedidoInput").val()!=""){
+            //RECOGE LAS LETRAS//
             var start = $("#pedidoInput").val()
             const marvel =  {
                 render:()=>{
+                    //URL DE LA API, CON LOS CAMPOS nameStartsWith QUE RECIBIRÁ LO QUE ESCRIBAMOS Y LO PEDIRÁ, MI CLAVE PARA PODER USARLA Y UN CÓDIGO HASH DE MI KEY//
                     const urlAPI = "https://gateway.marvel.com:443/v1/public/characters?ts=1&nameStartsWith="+start+"&apikey=074227bf87c87cf63d85a9de5377e968&hash=e75b099bc6b4e48782149ea13ccc39f5";
+                    //SELECCIONA EL DATALIST DEL HTML//
                     const constainer = document.querySelector("#pedidos");
+                    //CREA LA VARIABLE DONDE SE INSERTARÁ TODO EL CÓDIGO HTML//
                     let contentHTML = "";
         
+                    //HACE UNA PROMESA//
                     fetch(urlAPI)
                     .then(res => res.json())
                     .then((json) => {
+                        //ESTE FOR RECORRE TODOS LOS HELEMENTOS DEL JSON//
                         for(const hero of json.data.results){
+                            //CREA UN OPTION PARA EL DATALIST CON EL NOMBRE DEL HEROE DE LA API//
                             contentHTML+=`<option value='${hero.name}'>`
         
                         }
+                        //LO AÑADE AL HTML//
                         constainer.innerHTML=contentHTML;
                     })
                 }
             }
-        
+            //EJECUTA LA API//
             marvel.render()
 }})
 })
