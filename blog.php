@@ -33,6 +33,7 @@ $usuario = $_SESSION["usuario"];
         <label for="hamburguesa" class="fa fa-bars" id="icono"></label>
         <ul class="menu">
           <li><a href="home">Inicio</a></li>
+          <li><a href="personajes">Personajes</a></li>
           <li><a href="pedidos">Pedidos</a></li>
           <li><a href="contacto">Contacto</a></li>
           <li><a class="seleccionado" href="#">Blog</a></li>

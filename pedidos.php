@@ -1,12 +1,19 @@
 <?php
 session_start();
 
-if(isset($_SESSION["usuario"])){
-$usuario = $_SESSION["usuario"];
-}else{
-  $usuario = "";
-}
+if(!isset($_SESSION["usuario"])){
 ?>
+<script>window.location.assign("http://localhost/Marvel/TodoMarvel/login")</script>
+<?php
+}else{
+  $usuario = $_SESSION["usuario"];
+
+
+?>
+  
+
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
 
@@ -52,7 +59,6 @@ $usuario = $_SESSION["usuario"];
 <main>
 
 
-  
 
 
 
@@ -117,3 +123,9 @@ $usuario = $_SESSION["usuario"];
 
 </body>
 </html>
+
+<?php
+
+}
+
+?>
